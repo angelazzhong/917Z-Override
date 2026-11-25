@@ -2,19 +2,19 @@
 #include "lemlib/api.hpp" // IWYU pragma: keep
 
 pros::Controller master(pros::E_CONTROLLER_MASTER);
-pros::MotorGroup left_mg({1, -2, 3});    // Creates a motor group with forwards ports 1 & 3 and reversed port 2
-pros::MotorGroup right_mg({-4, 5, -6});  // Creates a motor group with forwards port 5 and reversed ports 4 & 6
-pros::Imu imu(10);
+pros::MotorGroup left_mg({});    // Creates a motor group with forwards ports 1 & 3 and reversed port 2
+pros::MotorGroup right_mg({});  // Creates a motor group with forwards port 5 and reversed ports 4 & 6
+lemlib::omniwheel::NEW_325
+pros::Imu imu();
 
 // drivetrain settings
 lemlib::Drivetrain drivetrain(&left_mg, // left motor group
                               &right_mg, // right motor group
-                              10, // 10 inch track width
+                              9.5, // 9.5 inch track width
                               lemlib::Omniwheel::NEW_325, // 
-                              400, // drivetrain rpm 
+                              600, // drivetrain rpm 
                               2 // horizontal drift is 2 (for now)
 );
-
 lemlib::OdomSensors sensors(nullptr, // vertical tracking wheel 1, set to null
                             nullptr, // vertical tracking wheel 2, set to nullptr as we are using IMEs
                             nullptr, // horizontal tracking wheel 1
